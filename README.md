@@ -1,6 +1,6 @@
 #  Rock Paper Scissors Game (JavaScript)
 
-A simple **Rock–Paper–Scissors** game built using **HTML and JavaScript**.  
+A simple **Rock–Paper–Scissors** game built using **HTML, CSS and JavaScript**.  
 The player plays against the computer, and the score updates after every round.
 
 This project is created to practice **JavaScript fundamentals** such as DOM manipulation, events, and conditional logic, Local storage.

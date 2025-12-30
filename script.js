@@ -1,28 +1,27 @@
-    let score = JSON.parse(localStorage.getItem('score')) // score was stored into json string
-                                                        // so we use json.parse to conver the score from string 
-    if(score === null ){
-        score = {
-                wins : 0,
-                loses : 0,
-                tie : 0
-        } 
+let score = JSON.parse(localStorage.getItem('score')) 
+if(score === null ){
+    score = {
+            wins : 0,
+            loses : 0,
+            tie : 0
+    } 
+}
+
+updateScoreElement();
+
+function finalResult(userMove){
+    let computerGuess = Math.random();
+    let computerPick = '';
+    let result = ''
+    if (computerGuess > 0 && computerGuess < 1/3){
+        computerPick = 'Rock';
     }
-
-    updateScoreElement();
-
-    function finalResult(userMove){
-        let computerGuess = Math.random();
-        let computerPick = '';
-        let result = ''
-        if (computerGuess > 0 && computerGuess < 1/3){
-            computerPick = 'Rock';
-        }
-        else if (computerGuess > 1/3 && computerGuess < 2/3){
-            computerPick = 'Paper';
-        }
-        else if (computerGuess > 2/3 && computerGuess < 1){
-            computerPick = 'Scissor';
-        }
+    else if (computerGuess > 1/3 && computerGuess < 2/3){
+        computerPick = 'Paper';
+    }
+    else if (computerGuess > 2/3 && computerGuess < 1){
+        computerPick = 'Scissor';
+    }
     if (userMove === 'Rock'){
         if (computerPick == 'Rock'){
                 result = 'Tie.';
@@ -71,12 +70,14 @@
         score.tie += 1;
     }
 
-localStorage.setItem('score',JSON.stringify(score)); //local storage only supports string
-                                                    // json.stringify convert score into string
+    localStorage.setItem('score',JSON.stringify(score));
     updateScoreElement();
 
     document.querySelector('.js-result').innerHTML = result
-    document.querySelector('.js-moves').innerHTML = `You ${userMove} - ${computerPick} Computer`;
+    document.querySelector('.js-moves').innerHTML = `You
+        <img src="images/${userMove.toLowerCase()}.jpg" class="move-icon">
+        <img src="images/${computerPick.toLowerCase()}.jpg" class="move-icon">
+        Computer`;
         
 }  
 function updateScoreElement(){
